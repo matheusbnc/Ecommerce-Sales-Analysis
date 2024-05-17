@@ -16,11 +16,56 @@ sns.set_style('whitegrid')
 
 # In[2]:
 
+def not_number(value):
+    return not value[0].isdigit()
+
+def title_col(data, col_name='Description'):
+    '''
+    Converte a primeira letra de cada palavra para maíuscula em uma coluna específica de um dataframe
+    
+    Parâmetros:
+    -----------    
+    data : pandas.DataFrame
+        O DataFrame onde a coluna está localizada
+    col_name : str
+        A coluna que será transformada. Deve ser string.
+    '''
+    data[col_name] = data[col_name].apply(lambda x: x.title())
+    return data
+
+
+def pre_processing(sales):
+    # Filtra todos os registros que não vendas/cancelamento de produtos
+    not_product_lines = sales[sales['StockCode'].apply(not_number)]
+
+    # Obter os valores únicos das linhas
+    not_product = not_product_lines['StockCode'].unique()
+    
+    sales = sales[~sales['StockCode'].isin(not_product)]
+    
+    # Adicionando coluna de Preço Final de venda/devolução para cada transação
+    sales['FinalPrice'] = sales['Quantity'] * sales['UnitPrice']
+    
+    # Excluindo os registros com valor unitário igual a zero
+    sales = sales[sales['UnitPrice'] > 0]
+    
+    # Remove as linhas duplicadas 
+    sales = sales.drop_duplicates()
+    
+    # Converte a primeira letra de cada palavra para maíuscula em uma coluna específica de um dataframe
+    title_col(sales)
+    
+    return sales
+
 def change_types(sales):
     sales['InvoiceDate'] = pd.to_datetime(sales['InvoiceDate'], format = '%d/%m/%Y %H:%M').dt.date
     sales['CustomerID'] = sales['CustomerID'].astype('str')
     sales['CustomerID'] = sales['CustomerID'].apply(lambda x: x.split('.')[0])
     sales['Country'] = sales['Country'].astype('str')
+
+def drop_nan(data, col_name='CustomerID'):
+    data = data.drop(data[data['CustomerID'] == 'nan'].index)
+    return data
 
 def format_number(num):
     '''
@@ -39,7 +84,7 @@ def format_number(num):
     if isinstance(num, str):
         return str(num)
     else:
-        return str(num)  # Retorna como string se não for int nem float
+        return str(num)  # Retorna como string se não for int. float ou string
 
 
 # In[3]:
@@ -79,19 +124,6 @@ def plot_bar(data, x_axes, y_axes, x_label, y_label, title, palette='viridis', s
     add_bar_values(ax, space)
     plt.show()
  
-def title_col(data, col_name='Description'):
-    '''
-    Converte a primeira letra de cada palavra para maíuscula em uma coluna específica de um dataframe
-    
-    Parâmetros:
-    -----------    
-    data : pandas.DataFrame
-        O DataFrame onde a coluna está localizada
-    col_name : str
-        A coluna que será transformada. Deve ser string.
-    '''
-    data[col_name] = data[col_name].apply(lambda x: x.title())
-    return data
 
 # In[ ]:
 
