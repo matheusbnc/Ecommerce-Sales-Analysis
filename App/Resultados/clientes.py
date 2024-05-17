@@ -52,7 +52,52 @@ def frequent_clients(sales_cli):
              ,y_label='Cliente', title='Clientes com Mais Ocorrências de Compra'\
              ,palette='crest')
     
-    print(sales_cli.head(15))  
+    print(sales_cli.head(15))
+    
+    
+def more_units_canceled_clients(sales_cli):
+    sleep(0.5)
+    
+    sales_cli = sales_cli[sales_cli['InvoiceNo'].str.startswith('C')].groupby('CustomerID')\
+                        .agg({'Quantity':'sum'}).abs().reset_index()
+    
+    sales_cli = sales_cli.sort_values(by=['Quantity'], ascending=False).reset_index(drop=True)
+    
+    plot_bar(sales_cli, x_axes='Quantity', y_axes='CustomerID', x_label='Quantidade Cancelada'\
+             ,y_label='Cliente', title='Clientes Com Mais Unidades Canceladas'\
+             ,palette='flare')
+    
+    print(sales_cli.head(15))
+    
+    
+def expensive_cancellations_clients(sales_cli):
+    sleep(0.5)
+    
+    sales_cli = sales_cli[sales_cli['InvoiceNo'].str.startswith('C')].groupby('CustomerID')\
+                        .agg({'FinalPrice':'sum'}).abs().reset_index()
+    
+    sales_cli = sales_cli.sort_values(by=['FinalPrice'], ascending=False).reset_index(drop=True)
+    
+    plot_bar(sales_cli, x_axes='FinalPrice', y_axes='CustomerID', x_label='Valor Total (£)'\
+             ,y_label='Cliente', title='Clientes Com Maiores Valores de Cancelamento'\
+             ,palette='flare')
+    
+    print(sales_cli.head(15))
+    
+    
+def frequent_cancellations_clients(sales_cli):
+    sleep(0.5)
+    
+    sales_cli = sales_cli[sales_cli['InvoiceNo'].str.startswith('C')].groupby('CustomerID')\
+                        .agg({'InvoiceNo':'count'}).abs().reset_index()
+    
+    sales_cli = sales_cli.sort_values(by=['InvoiceNo'], ascending=False).reset_index(drop=True)
+    
+    plot_bar(sales_cli, x_axes='InvoiceNo', y_axes='CustomerID', x_label='Ocorrências'\
+             ,y_label='Cliente', title='Clientes Com Mais Ocorrências de Cancelamento'\
+             ,palette='flare', space=1)
+    
+    print(sales_cli.head(15))    
 # In[ ]:
 
 
