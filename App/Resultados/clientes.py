@@ -21,7 +21,7 @@ def more_units_sold_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['Quantity'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='Quantity', y_axes='CustomerID', x_label='Quantidade Vendida'\
-             ,y_label='CustomerID', title='Clientes com Mais Unidades Adquiridas'\
+             ,y_label='ID Cliente', title='Clientes com Mais Unidades Adquiridas'\
              ,palette='crest')
     
     print(sales_cli.head(15))
@@ -34,7 +34,7 @@ def more_profitable_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['FinalPrice'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='FinalPrice', y_axes='CustomerID', x_label='Valor Total (£)'\
-             ,y_label='Cliente', title='Clientes que Geraram Mais Receita'\
+             ,y_label='ID Cliente', title='Clientes que Geraram Mais Receita'\
              ,palette='crest')
     
     print(sales_cli.head(15))    
@@ -49,7 +49,7 @@ def frequent_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['InvoiceNo'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='InvoiceNo', y_axes='CustomerID', x_label='Ocorrências'\
-             ,y_label='Cliente', title='Clientes com Mais Ocorrências de Compra'\
+             ,y_label='ID Cliente', title='Clientes com Mais Ocorrências de Compra'\
              ,palette='crest')
     
     print(sales_cli.head(15))
@@ -64,7 +64,7 @@ def more_units_canceled_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['Quantity'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='Quantity', y_axes='CustomerID', x_label='Quantidade Cancelada'\
-             ,y_label='Cliente', title='Clientes Com Mais Unidades Canceladas'\
+             ,y_label='ID Cliente', title='Clientes Com Mais Unidades Canceladas'\
              ,palette='flare')
     
     print(sales_cli.head(15))
@@ -79,7 +79,7 @@ def expensive_cancellations_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['FinalPrice'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='FinalPrice', y_axes='CustomerID', x_label='Valor Total (£)'\
-             ,y_label='Cliente', title='Clientes Com Maiores Valores de Cancelamento'\
+             ,y_label='ID Cliente', title='Clientes Com Maiores Valores de Cancelamento'\
              ,palette='flare')
     
     print(sales_cli.head(15))
@@ -94,7 +94,7 @@ def frequent_cancellations_clients(sales_cli):
     sales_cli = sales_cli.sort_values(by=['InvoiceNo'], ascending=False).reset_index(drop=True)
     
     plot_bar(sales_cli, x_axes='InvoiceNo', y_axes='CustomerID', x_label='Ocorrências'\
-             ,y_label='Cliente', title='Clientes Com Mais Ocorrências de Cancelamento'\
+             ,y_label='ID Cliente', title='Clientes Com Mais Ocorrências de Cancelamento'\
              ,palette='flare', space=1)
     
     print(sales_cli.head(15))    

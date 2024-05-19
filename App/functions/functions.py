@@ -105,7 +105,7 @@ def add_bar_values(ax, space=5):
                 format_number(bar_value), # Valor que será impresso (formatado)
                 ha='left', # Alinhamento horizontal do texto a esquerda
                 va='center', # Alinhamento vertical do texto centralizado 
-                fontsize=10) # Tamanho da fonte do número
+                fontsize=12) # Tamanho da fonte do número
 
 
 # In[4]:
@@ -122,6 +122,7 @@ def plot_bar(data, x_axes, y_axes, x_label, y_label, title, palette='viridis', s
     plt.yticks(fontsize=12)
     plt.title(title, fontsize=16, fontweight='bold')
     add_bar_values(ax, space)
+    plt.tight_layout()
     plt.show()
  
 
