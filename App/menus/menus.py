@@ -1,4 +1,5 @@
 def main_menu():
+    # Exibe o menu principal com as opções de análise
     print('='*80)
     print('MENU PRINCIPAL'.center(80))
     print('='*80)
@@ -10,6 +11,7 @@ def main_menu():
     print('0. Sair')    
 
 def produto_submenu():
+    # Exibe o submenu de análise de produtos com várias opções de relatórios
     print('\n' + '='*80)
     print('ANÁLISE DE PRODUTOS'.center(80))
     print('='*80)
@@ -23,6 +25,7 @@ def produto_submenu():
     print('0. Voltar ao Menu Principal')
 
 def cliente_submenu():
+    # Exibe o submenu de análise de clientes com várias opções de relatórios
     print('\n' + '='*80)
     print('ANÁLISE DE CLIENTES'.center(80))
     print('='*80)
@@ -36,6 +39,7 @@ def cliente_submenu():
     print('0. Voltar ao Menu Principal')
 
 def pais_submenu():
+    # Exibe o submenu de análise de países com várias opções de relatórios
     print('\n' + '='*80)
     print('ANÁLISE DE PAÍSES'.center(80))
     print('='*80)
@@ -49,6 +53,7 @@ def pais_submenu():
     print('0. Voltar ao Menu Principal')
 
 def sazonalidade_submenu():
+    # Exibe o submenu de análise de sazonalidade com várias opções de relatórios
     print('\n' + '='*80)
     print('ANÁLISE DE SAZONALIDADE'.center(80))
     print('='*80)
