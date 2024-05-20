@@ -6,7 +6,7 @@
 
 import pandas as pd
 import numpy as np
-from functions.functions import plot_line, data_summary
+from functions.functions import plot_line, data_summary, group_data
 from time import sleep
 
 
@@ -14,16 +14,20 @@ from time import sleep
 
 
 def daily_variation_quantity(sales_saz):
-    sales_saz = sales_saz.groupby('Day').apply(lambda x: pd.Series({
-        'Quantidade Vendida': x.loc[~x['InvoiceNo'].str.startswith('C'), 'Quantity'].sum()\
-        ,'Quantidade Cancelada': x.loc[x['InvoiceNo'].str.startswith('C'), 'Quantity']\
-        .sum()})).reset_index()
-    sales_saz['Quantidade Cancelada'] = sales_saz['Quantidade Cancelada'].abs()
-    # Converter a coluna 'Day' para uma categoria para manter a ordem correta dos dias
-    salez_saz['Day'] = pd.Categorical(df['Day'], categories=['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'], ordered=True)
-    data_summary(sales_saz)    
-
-
+    sleep(0.5)
+    
+    sales_var = group_data(sales_saz, group_col='Day', operation_col='Quantity'\
+                       ,operation='sum', how='sales')
+    sales_var['Type'] = 'Unidades Vendidas'
+    
+    cancellations_var = group_data(sales_saz, group_col='Day', operation_col='Quantity'\
+                       ,operation='sum', how='cancellations')
+    cancellations_var['Type'] = 'Unidades Canceladas'
+    
+    combined_data = pd.concat([sales_var, cancellations_var], ignore_index=True)
+    
+    print(combined_data)
+    
 # In[ ]:
 
 

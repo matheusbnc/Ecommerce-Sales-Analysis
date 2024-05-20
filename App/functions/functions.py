@@ -48,8 +48,8 @@ def add_bar_values(ax, space=5):
 
 def plot_bar(data, x_axes, y_axes, x_label, y_label, title, palette='viridis', space=5):
     plt.figure(figsize=(13,9))
-    ax = sns.barplot(data=data.head(15), 
-                             x=x_axes, y= y_axes, 
+    ax = sns.barplot(data= data.head(15), 
+                             x=x_axes, y=y_axes, 
                              palette=palette)
     plt.xlabel(x_label, fontsize=14, fontweight='bold')
     plt.ylabel(y_label, fontsize=14, fontweight='bold')
@@ -66,9 +66,11 @@ def data_summary(sales):
     print(sales.head(15))
     print("="*120)
     
-def plot_line(data):
+
+def plot_line(x1, y1, x2, y2, label1=None, label2=None, xlabel=None, title=''):
     pass
 
+    
 def group_data(data, group_col='Description', operation_col='Quantity', operation='sum', how='balance'):
     
     if how == 'balance':
