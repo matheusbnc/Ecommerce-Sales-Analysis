@@ -69,6 +69,24 @@ def data_summary(sales):
 def plot_line(data):
     pass
 
+def group_data(data, group_col='Description', operation_col='Quantity', operation='sum', how='balance'):
+    
+    if how == 'balance':
+        data = data.groupby(group_col).agg({operation_col : operation}).reset_index()
+        
+    elif how == 'sales':
+        data = data[~data['InvoiceNo'].str.startswith('C')].groupby(group_col)\
+                        .agg({operation_col : operation}).abs().reset_index()
+    elif how == 'cancellations':
+        data = data[data['InvoiceNo'].str.startswith('C')].groupby(group_col)\
+                        .agg({operation_col : operation}).abs().reset_index()
+    else:
+        raise ValueError("Argumento 'how' deve ser 'balance', 'sales' ou 'cancellations'.")
+
+    data = data.sort_values(by=[operation_col], ascending=False).reset_index(drop=True)    
+    
+    return data
+    
 
 
 
