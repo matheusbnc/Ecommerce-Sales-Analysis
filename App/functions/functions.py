@@ -65,6 +65,9 @@ def data_summary(sales):
     print("="*120)
     print(sales.head(15))
     print("="*120)
+    
+def plot_line(data):
+    pass
 
 
 
