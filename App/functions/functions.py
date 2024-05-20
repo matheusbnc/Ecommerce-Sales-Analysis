@@ -90,6 +90,10 @@ def group_data(data, group_col='Description', operation_col='Quantity', operatio
     return data
     
 
-
-
+def order_days(data):
+    data['Day'] = pd.Categorical(data['Day'],
+                                 categories=['Domingo', 'Segunda-feira', 'Terça-feira',\
+                                             'Quarta-feira', 'Quinta-feira', 'Sexta-feira'],
+                                 ordered=True)
+    return data.sort_values(by=['Day']).reset_index(drop=True)
 
