@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
+from matplotlib.ticker import ScalarFormatter
 
 # Configurando o estilo de plotagem do seaborn
 sns.set_style('whitegrid')
@@ -67,8 +68,30 @@ def data_summary(sales):
     print("="*120)
     
 
-def plot_line(x1, y1, x2, y2, label1=None, label2=None, xlabel=None, title=''):
-    pass
+def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+    sns.lineplot(data=data1, x=x_axes, y=y_axes, ax=ax1, marker='o', color='green')
+    ax1.set_title(title1, fontsize=16, fontweight='bold')
+    ax1.set_xlabel(x_label, fontsize=14, fontweight='bold')
+    ax1.set_ylabel(y_label, fontsize=14, fontweight='bold')
+    ax1.tick_params(axis='x', labelsize=12, rotation=45)
+    ax1.tick_params(axis='y', labelsize=12)
+    ax1.grid(True, linestyle='--', alpha=0.6)
+    ax1.yaxis.set_major_formatter(ScalarFormatter(useOffset=False, useMathText=False))
+    ax1.yaxis.get_major_formatter().set_scientific(False)
+
+    sns.lineplot(data=data2, x=x_axes, y=y_axes, ax=ax2, marker='o', color='red')
+    ax2.set_title(title2, fontsize=16, fontweight='bold')
+    ax2.set_xlabel(x_label, fontsize=14, fontweight='bold')
+    ax2.set_ylabel('')
+    ax2.tick_params(axis='x', labelsize=12, rotation=45)
+    ax2.tick_params(axis='y', labelsize=12)
+    ax2.grid(True, linestyle='--', alpha=0.6)
+    
+    plt.tight_layout()
+    plt.show()
+
 
     
 def group_data(data, group_col='Description', operation_col='Quantity', operation='sum', how='balance'):

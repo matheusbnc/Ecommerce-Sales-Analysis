@@ -25,8 +25,9 @@ def daily_variation_quantity(sales_saz):
     sales_var = order_days(sales_var)
     cancellations_var = order_days(cancellations_var)
     
-    print(sales_var)
-    print(cancellations_var)
+    plot_line(data1=sales_var, data2=cancellations_var, x_axes='Day', y_axes='Quantity'\
+                      ,x_label='Dia', y_label='Unidades'\
+                      ,title1='Total de Compras por Dia', title2='Total de Cancelamentos por Dia')
 
     
 # In[ ]:
