@@ -1,57 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 
 
-# In[2]:
-
-
 def not_number(value):
     return not value[0].isdigit()
-
-
-# In[3]:
-
-
-def pre_processing(sales):
-    
-    # Filtra todos os registros que não vendas/cancelamento de produtos
-    not_product_lines = sales[sales['StockCode'].apply(not_number)]
-
-    # Obter os valores únicos das linhas
-    not_product = not_product_lines['StockCode'].unique()
-    
-    sales = sales[~sales['StockCode'].isin(not_product)]
-    
-    # Adicionando coluna de Preço Final de venda/devolução para cada transação
-    sales['FinalPrice'] = sales['Quantity'] * sales['UnitPrice']
-    
-    # Excluindo os registros com valor unitário igual a zero
-    sales = sales[sales['UnitPrice'] > 0]
-    
-    # Remove as linhas duplicadas 
-    sales = sales.drop_duplicates()
-    
-    # Converte a primeira letra de cada palavra para maíuscula em uma coluna específica de um dataframe
-    title_col(sales)
-    
-    return sales
-
-
-# In[4]:
-
-
-def drop_nan(data, col_name='CustomerID'):
-    data = data.drop(data[data['CustomerID'] == 'nan'].index)
-    return data
-
-
-# In[5]:
 
 
 def title_col(data, col_name='Description'):
@@ -69,17 +21,47 @@ def title_col(data, col_name='Description'):
     return data
 
 
-# In[6]:
+def pre_processing(data):
+    
+    # Filtra todos os registros que não vendas/cancelamento de produtos
+    not_product_lines = data[data['StockCode'].apply(not_number)]
+
+    # Obter os valores únicos das linhas
+    not_product = not_product_lines['StockCode'].unique()
+    
+    data = data[~data['StockCode'].isin(not_product)]
+    
+    # Adicionando coluna de Preço Final de venda/devolução para cada transação
+    data['FinalPrice'] = data['Quantity'] * data['UnitPrice']
+    
+    # Excluindo os registros com valor unitário igual a zero
+    data = data[data['UnitPrice'] > 0]
+    
+    # Remove as linhas duplicadas 
+    data = data.drop_duplicates()
+    
+    # Converte a primeira letra de cada palavra para maíuscula em uma coluna específica de um dataframe
+    title_col(data)
+    
+    return data
 
 
-def change_types(sales):
-    sales['InvoiceDate'] = pd.to_datetime(sales['InvoiceDate'], format = '%d/%m/%Y %H:%M').dt.date
-    sales['CustomerID'] = sales['CustomerID'].astype('str')
-    sales['CustomerID'] = sales['CustomerID'].apply(lambda x: x.split('.')[0])
-    sales['Country'] = sales['Country'].astype('str')
+def change_types(data):
+    data['InvoiceDate'] = pd.to_datetime(data['InvoiceDate'], format = '%d/%m/%Y %H:%M').dt.date
+    data['CustomerID'] = data['CustomerID'].astype('str')
+    data['CustomerID'] = data['CustomerID'].apply(lambda x: x.split('.')[0])
+    data['Country'] = data['Country'].astype('str')
 
 
-# In[ ]:
+def drop_uk(data):
+    data = data.drop(data[data['Country'] == 'United Kingdom'].index)
+    return data
+
+
+def drop_nan(data, col_name='CustomerID'):
+    data = data.drop(data[data['CustomerID'] == 'nan'].index)
+    return data
+
 
 
 

@@ -4,10 +4,6 @@ from functions.functions import plot_bar, data_summary
 from time import sleep
 
 
-def drop_uk(sales_ctr):
-    sales_ctr = sales_ctr.drop(sales_ctr[sales_ctr['Country'] == 'United Kingdom'].index)
-    return sales_ctr
-
 def more_units_sold_country(sales_ctr):
     sleep(0.5)
     
