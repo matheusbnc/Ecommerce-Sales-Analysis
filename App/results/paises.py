@@ -54,7 +54,7 @@ def more_units_canceled_country(sales_ctr):
     
     plot_bar(sales_ctr, x_axes='Quantity', y_axes='Country', x_label='Quantidade Cancelada'\
              ,y_label='País', title='Países Estrangeiros com Mais Unidades Canceladas'\
-             ,palette='flare')
+             ,palette='cividis')
     
     data_summary(sales_ctr)
     
@@ -69,7 +69,7 @@ def expensive_cancellations_country(sales_ctr):
     
     plot_bar(sales_ctr, x_axes='FinalPrice', y_axes='Country', x_label='Valor Total (£)'\
              ,y_label='País', title='Países Estrangeiros Com Maiores Valores de Cancelamento'\
-             ,palette='flare')
+             ,palette='cividis')
     
     data_summary(sales_ctr)
     
@@ -84,6 +84,6 @@ def frequent_cancellations_country(sales_ctr):
     
     plot_bar(sales_ctr, x_axes='InvoiceNo', y_axes='Country', x_label='Ocorrências'\
              ,y_label='País', title='Países Estrangeiros Com Mais Ocorrências de Cancelamento'\
-             ,palette='flare', space=1)
+             ,palette='cividis', space=1)
     
     data_summary(sales_ctr)    
