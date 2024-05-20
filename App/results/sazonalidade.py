@@ -26,6 +26,7 @@ def daily_variation_quantity(sales_saz):
     cancellations_var = order_days(cancellations_var)
     
     print(sales_var)
+    print(cancellations_var)
 
     
 # In[ ]:
