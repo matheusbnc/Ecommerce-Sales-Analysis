@@ -47,10 +47,11 @@ def pre_processing(data):
 
 
 def change_types(data):
-    data['InvoiceDate'] = pd.to_datetime(data['InvoiceDate'], format = '%d/%m/%Y %H:%M').dt.date
+    data['InvoiceDate'] = pd.to_datetime(data['InvoiceDate'], format = '%d/%m/%Y %H:%M')
     data['CustomerID'] = data['CustomerID'].astype('str')
     data['CustomerID'] = data['CustomerID'].apply(lambda x: x.split('.')[0])
     data['Country'] = data['Country'].astype('str')
+    return data
 
 
 def drop_uk(data):
@@ -62,6 +63,14 @@ def drop_nan(data, col_name='CustomerID'):
     data = data.drop(data[data['CustomerID'] == 'nan'].index)
     return data
 
+
+def add_time_columns(data):
+    data['Month'] = data['InvoiceDate'].dt.month
+    data['Day'] = data['InvoiceDate'].dt.day_name(locale='pt_BR')
+    data['Quarter'] = data['InvoiceDate'].dt.quarter.apply(lambda x: f'T{x}')
+    return data
+
+    
 
 
 
