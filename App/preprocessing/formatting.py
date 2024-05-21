@@ -68,6 +68,7 @@ def add_time_columns(data):
     data['Month'] = data['InvoiceDate'].dt.month_name(locale='pt_BR')
     data['Day'] = data['InvoiceDate'].dt.day_name(locale='pt_BR')
     data['Quarter'] = data['InvoiceDate'].dt.quarter.apply(lambda x: f'T{x}')
+    data['Year'] = data['InvoiceDate'].dt.year
     return data
 
     

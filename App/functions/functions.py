@@ -68,14 +68,14 @@ def data_summary(sales):
     print("="*120)
     
 
-def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2):
+def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2, rotation=45):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
     sns.lineplot(data=data1, x=x_axes, y=y_axes, ax=ax1, marker='o', color='green')
     ax1.set_title(title1, fontsize=16, fontweight='bold')
     ax1.set_xlabel(x_label, fontsize=14, fontweight='bold')
     ax1.set_ylabel(y_label, fontsize=14, fontweight='bold')
-    ax1.tick_params(axis='x', labelsize=12, rotation=45)
+    ax1.tick_params(axis='x', labelsize=12, rotation=rotation)
     ax1.tick_params(axis='y', labelsize=12)
     ax1.grid(True, linestyle='--', alpha=0.6)
     ax1.margins(x=0.01)
@@ -86,7 +86,7 @@ def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2):
     ax2.set_title(title2, fontsize=16, fontweight='bold')
     ax2.set_xlabel(x_label, fontsize=14, fontweight='bold')
     ax2.set_ylabel('')
-    ax2.tick_params(axis='x', labelsize=12, rotation=45)
+    ax2.tick_params(axis='x', labelsize=12, rotation=rotation)
     ax2.tick_params(axis='y', labelsize=12)
     ax2.grid(True, linestyle='--', alpha=0.6)
     ax2.margins(x=0.01)
@@ -130,3 +130,10 @@ def order_months(data):
                                              'Outubro', 'Novembro', 'Dezembro'],
                                  ordered=True)
     return data.sort_values(by=['Month']).reset_index(drop=True)
+
+
+def order_quarters(data):
+    data['Quarter'] = pd.Categorical(data['Quarter']\
+                            ,categories=['T1', 'T2', 'T3', 'T4'], ordered=True)
+    
+    return data.sort_values(by=['Quarter']).reset_index(drop=True)
