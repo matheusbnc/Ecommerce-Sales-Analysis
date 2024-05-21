@@ -48,6 +48,19 @@ def add_bar_values(ax, space=5):
                 fontsize=12) # Tamanho da fonte do número
 
 def plot_bar(data, x_axes, y_axes, x_label, y_label, title, palette='viridis', space=5):
+    '''
+    Plota um gráfico de barras com valores adicionados
+    
+    Parâmetros:
+        data (DataFrame): DataFrame com os dados a serem plotados
+        x_axes (str): Nome da coluna para o eixo x
+        y_axes (str): Nome da coluna para o eixo y
+        x_label (str): Rótulo do eixo x
+        y_label (str): Rótulo do eixo y
+        title (str): Título do gráfico
+        palette (str, opcional): Paleta de cores a ser usada. Padrão: 'viridis'
+        space (int, opcional): Espaçamento entre a barra e o início do texto. Padrão: 5
+    '''
     plt.figure(figsize=(13,9))
     ax = sns.barplot(data= data.head(15), 
                              x=x_axes, y=y_axes, 
@@ -61,14 +74,34 @@ def plot_bar(data, x_axes, y_axes, x_label, y_label, title, palette='viridis', s
     plt.tight_layout()
     plt.show()
 
-def data_summary(sales):
+def data_summary(data):
+    '''
+    Exibe um resumo personalizado dos dados
+    
+    Parâmetros:
+        sales (DataFrame): DataFrame com os dados
+    '''
     print('RESUMO DOS DADOS'.center(120))
     print("="*120)
-    print(sales.head(15))
+    print(data.head(15))
     print("="*120)
     
 
 def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2, rotation=45):
+    '''
+    Plota dois gráficos de linha lado a lado
+    
+    Parâmetros:
+        data1 (DataFrame): DataFrame com os dados para o primeiro gráfico
+        data2 (DataFrame): DataFrame com os dados para o segundo gráfico
+        x_axes (str): Nome da coluna para o eixo x
+        y_axes (str): Nome da coluna para o eixo y
+        x_label (str): Rótulo do eixo x
+        y_label (str): Rótulo do eixo y
+        title1 (str): Título do primeiro gráfico
+        title2 (str): Título do segundo gráfico
+        rotation (int, opcional): Rotação dos rótulos do eixo x. Padrão: 45
+    '''
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
     sns.lineplot(data=data1, x=x_axes, y=y_axes, ax=ax1, marker='o', color='green')
@@ -97,14 +130,26 @@ def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2, ro
 
     
 def group_data(data, group_col='Description', operation_col='Quantity', operation='sum', how='balance'):
+    '''
+    Agrupa os dados de acordo com a coluna especificada, operação a ser realizada e método de agrupamento
     
+    Parâmetros:
+        data (DataFrame): DataFrame com os dados a serem agrupados
+        group_col (str): Nome da coluna para agrupar
+        operation_col (str): Nome da coluna para aplicar a operação
+        operation (str): Operação a ser aplicada (ex: 'sum', 'count')
+        how (str): Método de agrupamento ('balance', 'sales', 'cancellations')
+    '''    
     if how == 'balance':
+        # Balance: Agrupa considerando o saldo de vendas e cancelamentos e aplica a operação
         data = data.groupby(group_col).agg({operation_col : operation}).reset_index()
         
     elif how == 'sales':
+        # Sales: Filtra apenas as vendas (InvoiceNo não começando com 'C'), agrupa e aplica a operação
         data = data[~data['InvoiceNo'].str.startswith('C')].groupby(group_col)\
                         .agg({operation_col : operation}).abs().reset_index()
     elif how == 'cancellations':
+        # Cancellations: Filtra apenas os cancelamentos (InvoiceNo começando com 'C'), agrupa e aplica operação
         data = data[data['InvoiceNo'].str.startswith('C')].groupby(group_col)\
                         .agg({operation_col : operation}).abs().reset_index()
     else:
@@ -116,6 +161,12 @@ def group_data(data, group_col='Description', operation_col='Quantity', operatio
     
 
 def order_days(data):
+    '''
+    Ordena os dados pelos dias da semana em português
+    
+    Parâmetros:
+        data (DataFrame): DataFrame com a coluna 'Day' para ordenar
+    '''
     data['Day'] = pd.Categorical(data['Day'],
                                  categories=['Domingo', 'Segunda-feira', 'Terça-feira',\
                                              'Quarta-feira', 'Quinta-feira', 'Sexta-feira'],
@@ -123,6 +174,12 @@ def order_days(data):
     return data.sort_values(by=['Day']).reset_index(drop=True)
 
 def order_months(data):
+    '''
+    Ordena os dados pelos meses do ano em português
+    
+    Parâmetros:
+        data (DataFrame): DataFrame com a coluna 'Month' para ordenar
+    '''    
     data['Month'] = pd.Categorical(data['Month'],
                                  categories=['Janeiro', 'Fevereiro', 'Março',\
                                              'Abril', 'Maio', 'Junho',\
@@ -133,6 +190,12 @@ def order_months(data):
 
 
 def order_quarters(data):
+    '''
+    Ordena os dados pelos trimestres
+    
+    Parâmetros:
+        data (DataFrame): DataFrame com a coluna 'Quarter' para ordenar
+    '''
     data['Quarter'] = pd.Categorical(data['Quarter']\
                             ,categories=['T1', 'T2', 'T3', 'T4'], ordered=True)
     
