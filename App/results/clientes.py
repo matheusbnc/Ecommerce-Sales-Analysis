@@ -5,6 +5,13 @@ from time import sleep
 
 
 def more_units_sold_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes com maior saldo de unidades compradas,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de vendas por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='Quantity'\
@@ -17,6 +24,13 @@ def more_units_sold_clients(sales_cli):
     data_summary(sales_cli)
 
 def more_profitable_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes que geraram maior receita final,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de vendas por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='FinalPrice'\
@@ -30,6 +44,13 @@ def more_profitable_clients(sales_cli):
     
 
 def frequent_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes com mais registros de compra,
+    sem considerar cancelamentos.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de vendas por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='InvoiceNo'\
@@ -43,6 +64,12 @@ def frequent_clients(sales_cli):
     
     
 def more_units_canceled_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes com mais unidades canceladas.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de cancelamentos por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='Quantity'\
@@ -56,6 +83,12 @@ def more_units_canceled_clients(sales_cli):
     
     
 def expensive_cancellations_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes com maiores valores de cancelamento.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de cancelamentos por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='FinalPrice'\
@@ -69,6 +102,12 @@ def expensive_cancellations_clients(sales_cli):
     
     
 def frequent_cancellations_clients(sales_cli):
+    '''
+    Plota e exibe um resumo dos clientes com mais registros de cancelamento.
+    
+    Parâmetros:
+        sales_cli (DataFrame): DataFrame contendo os dados de cancelamentos por cliente.
+    '''
     sleep(0.5)
     
     sales_cli = group_data(sales_cli, group_col='CustomerID', operation_col='InvoiceNo'\
