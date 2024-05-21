@@ -1,18 +1,17 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 from functions.functions import plot_bar, data_summary, group_data
 from time import sleep
 
 
-# In[2]:
-
 def more_units_sold(sales_uni):
+    '''
+    Plota e exibe um resumo dos produtos com maior saldo de unidades vendidas,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de vendas por produto.
+    '''
     sleep(0.5)
     
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='Quantity'\
@@ -25,6 +24,13 @@ def more_units_sold(sales_uni):
     data_summary(sales_uni)
     
 def more_profitable(sales_uni):
+    '''
+    Plota e exibe um resumo dos produtos que geraram maior receita final,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de vendas por produto.
+    '''
     sleep(0.5)
     
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='FinalPrice'\
@@ -38,6 +44,13 @@ def more_profitable(sales_uni):
 
     
 def frequent_sales(sales_uni):
+    '''
+    Plota e exibe um resumo dos produtos com mais registros de compra,
+    sem considerar cancelamentos.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de vendas por produto.
+    '''
     sleep(0.5)
 
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='InvoiceNo'\
@@ -51,6 +64,12 @@ def frequent_sales(sales_uni):
 
     
 def more_units_canceled(sales_uni): 
+    '''
+    Plota e exibe um resumo dos produtos com mais unidades canceladas.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de cancelamento por produto.
+    '''
     sleep(0.5)
 
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='Quantity'\
@@ -64,6 +83,12 @@ def more_units_canceled(sales_uni):
  
 
 def expensive_cancellations(sales_uni):
+    '''
+    Plota e exibe um resumo dos produtos com maiores valores de cancelamento.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de cancelamento por produto.
+    '''
     sleep(0.5)
 
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='FinalPrice'\
@@ -77,6 +102,12 @@ def expensive_cancellations(sales_uni):
     
     
 def frequent_cancellations(sales_uni):
+    '''
+    Plota e exibe um resumo dos produtos com mais registros de cancelamento.
+    
+    Parâmetros:
+        sales_uni (DataFrame): DataFrame contendo os dados de cancelamento por produto.
+    '''
     sleep(0.5)
     
     sales_uni = group_data(sales_uni, group_col='Description', operation_col='InvoiceNo'\
@@ -88,8 +119,3 @@ def frequent_cancellations(sales_uni):
     
     data_summary(sales_uni)    
     
-# In[ ]:
-
-
-
-
