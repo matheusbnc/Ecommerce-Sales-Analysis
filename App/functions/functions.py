@@ -78,6 +78,7 @@ def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2):
     ax1.tick_params(axis='x', labelsize=12, rotation=45)
     ax1.tick_params(axis='y', labelsize=12)
     ax1.grid(True, linestyle='--', alpha=0.6)
+    ax1.margins(x=0.01)
     ax1.yaxis.set_major_formatter(ScalarFormatter(useOffset=False, useMathText=False))
     ax1.yaxis.get_major_formatter().set_scientific(False)
 
@@ -88,6 +89,7 @@ def plot_line(data1, data2, x_axes, y_axes, x_label, y_label, title1, title2):
     ax2.tick_params(axis='x', labelsize=12, rotation=45)
     ax2.tick_params(axis='y', labelsize=12)
     ax2.grid(True, linestyle='--', alpha=0.6)
+    ax2.margins(x=0.01)
     
     plt.tight_layout()
     plt.show()
@@ -120,3 +122,11 @@ def order_days(data):
                                  ordered=True)
     return data.sort_values(by=['Day']).reset_index(drop=True)
 
+def order_months(data):
+    data['Month'] = pd.Categorical(data['Month'],
+                                 categories=['Janeiro', 'Fevereiro', 'Março',\
+                                             'Abril', 'Maio', 'Junho',\
+                                             'Julho', 'Agosto', 'Setembro',\
+                                             'Outubro', 'Novembro', 'Dezembro'],
+                                 ordered=True)
+    return data.sort_values(by=['Month']).reset_index(drop=True)
