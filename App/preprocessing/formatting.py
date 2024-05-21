@@ -21,7 +21,7 @@ def pre_processing(data):
     not_product = not_product_lines['StockCode'].unique()
     data = data[~data['StockCode'].isin(not_product)]
     
-    # Adiciona coluna de Preço Final de venda/devolução para cada transação
+    # Adiciona uma coluna de Preço Final de venda/devolução para cada transação
     data['FinalPrice'] = data['Quantity'] * data['UnitPrice']
     
     # Exclui os registros com valor unitário igual a zero
