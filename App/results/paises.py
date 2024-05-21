@@ -5,6 +5,13 @@ from time import sleep
 
 
 def more_units_sold_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros com maior saldo de unidades vendidas,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de vendas por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='Quantity'\
@@ -15,8 +22,16 @@ def more_units_sold_country(sales_ctr):
              ,palette='plasma')
     
     data_summary(sales_ctr)
+    
 
 def more_profitable_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros que geraram maior receita final,
+    somando as vendas com os cancelamentos.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de vendas por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='FinalPrice'\
@@ -30,6 +45,13 @@ def more_profitable_country(sales_ctr):
     
 
 def frequent_sales_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros com mais registros de compra,
+    sem considerar cancelamentos.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de vendas por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='InvoiceNo'\
@@ -40,7 +62,15 @@ def frequent_sales_country(sales_ctr):
              ,palette='plasma')
     
     data_summary(sales_ctr)
+    
+    
 def more_units_canceled_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros com mais unidades canceladas.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de cancelamentos por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='Quantity'\
@@ -52,8 +82,14 @@ def more_units_canceled_country(sales_ctr):
     
     data_summary(sales_ctr)
     
-    
+      
 def expensive_cancellations_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros com maiores valores de cancelamento.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de cancelamentos por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='FinalPrice'\
@@ -67,6 +103,12 @@ def expensive_cancellations_country(sales_ctr):
     
     
 def frequent_cancellations_country(sales_ctr):
+    '''
+    Plota e exibe um resumo dos países estrangeiros com mais registros de cancelamento.
+    
+    Parâmetros:
+        sales_ctr (DataFrame): DataFrame contendo os dados de cancelamentos por país.
+    '''
     sleep(0.5)
     
     sales_ctr = group_data(sales_ctr, group_col='Country', operation_col='InvoiceNo'\
