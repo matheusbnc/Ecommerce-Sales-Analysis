@@ -28,6 +28,7 @@ def daily_variation_quantity(sales_saz):
     plot_line(data1=sales_var, data2=cancellations_var, x_axes='Day', y_axes='Quantity'\
                       ,x_label='Dia', y_label='Unidades'\
                       ,title1='Variação Diária de Vendas', title2='Variação Diária de Cancelamentos')
+
     
 def daily_variation_price(sales_saz):
     sleep(0.5)
@@ -45,6 +46,7 @@ def daily_variation_price(sales_saz):
                       ,x_label='Dia', y_label='Valor (£)'\
                       ,title1='Variação Diária de Vendas', title2='Variação Diária de Cancelamentos')
 
+    
 def daily_variation_frequency(sales_saz):
     sleep(0.5)
     
@@ -60,6 +62,7 @@ def daily_variation_frequency(sales_saz):
     plot_line(data1=sales_var, data2=cancellations_var, x_axes='Day', y_axes='InvoiceNo'\
                       ,x_label='Dia', y_label='Ocorrências'\
                       ,title1='Variação Diária de Vendas', title2='Variação Diária de Cancelamentos')    
+
     
 def monthly_variation_quantity(sales_saz):
     sleep(0.5)
@@ -76,6 +79,7 @@ def monthly_variation_quantity(sales_saz):
     plot_line(data1=sales_var, data2=cancellations_var, x_axes='Month', y_axes='Quantity'\
                       ,x_label='Mês', y_label='Unidades'\
                       ,title1='Variação Mensal de Vendas', title2='Variação Mensal de Cancelamentos')
+
     
 def monthly_variation_price(sales_saz):
     sleep(0.5)
@@ -93,6 +97,7 @@ def monthly_variation_price(sales_saz):
                       ,x_label='Mês', y_label='Valor (£)'\
                       ,title1='Variação Mensal de Vendas', title2='Variação Mensal de Cancelamentos')
 
+    
 def monthly_variation_frequency(sales_saz):
     sleep(0.5)
     
@@ -108,6 +113,7 @@ def monthly_variation_frequency(sales_saz):
     plot_line(data1=sales_var, data2=cancellations_var, x_axes='Month', y_axes='InvoiceNo'\
                       ,x_label='Mês', y_label='Ocorrências'\
                       ,title1='Variação Mensal de Vendas', title2='Variação Mensal de Cancelamentos')
+
     
 def quarterly_variation_quantity(sales_saz):
     sleep(0.5)
@@ -125,6 +131,7 @@ def quarterly_variation_quantity(sales_saz):
                       ,x_label='Trimestre', y_label='Unidades'\
                       ,title1='Variação Trimestral de Vendas', title2='Variação Trimestral de Cancelamentos'\
                       ,rotation=0)
+
     
 def quarterly_variation_price(sales_saz):
     sleep(0.5)
@@ -143,6 +150,7 @@ def quarterly_variation_price(sales_saz):
                       ,title1='Variação Trimestral de Vendas', title2='Variação Trimestral de Cancelamentos'\
                       ,rotation=0)
 
+    
 def quarterly_variation_frequency(sales_saz):
     sleep(0.5)
     
