@@ -13,21 +13,21 @@ O projeto foi realizado para aplicar os conhecimentos adquiridos em Python e an�
 
 ## Índice
 
-- [Introdução]()
+- [Introdução](#Introdução)
 
-- [Fonte dos Dados]()
+- [Fonte dos Dados](#Fonte dos Dados)
 
-- [Dicionário dos Dados]()
+- [Dicionário dos Dados](#Dicionário dos Dados)
 
-- [Análise Inicial do Dataset]()
+- [Análise Inicial do Dataset](#Análise Inicial do Dataset)
 
-- [Estrutura do Projeto]()
+- [Estrutura do Projeto](#Estrutura do Projeto)
 
-- [Funcionalidades]()
+- [Funcionalidades](#Funcionalidades)
 
-- [Aprendizados]()
+- [Aprendizados](#Aprendizados)
 
-- [Executando Localmente]()
+- [Executando Localmente](#Executando Localmente)
 
 
 ## Introdução
@@ -52,7 +52,7 @@ Este conjunto de dados consiste em pedidos feitos em diferentes países de dezem
 
 ## Análise Inicial do Dataset
 
-Antes de desenvolver a aplicação, foi realizada uma análise inicial dos dados, documentada no arquivo [dataset_review.ipynb]().
+Antes de desenvolver a aplicação, foi realizada uma análise inicial dos dados, documentada no arquivo **dataset_review.ipynb**.
 A revisão do dataset foi muito importante para:
 
 - Verificar duplicatas
@@ -62,7 +62,7 @@ A revisão do dataset foi muito importante para:
 - Outras inconsistências e peculiaridades dos dados
 
 ### Importância
-A análise inicial foi fundamental para garantir a qualidade dos dados e a precisão das análises. A partir das descobertas feitas nesse estágio, foram criadas as funções de formatação e pré-processamento no arquivo [formatting.py](). 
+A análise inicial foi fundamental para garantir a qualidade dos dados e a precisão das análises. A partir das descobertas feitas nesse estágio, foram criadas as funções de formatação e pré-processamento no arquivo **formatting.py**. 
 
 Essas funções são responsáveis por limpar e preparar o dataset ao carregá-lo e também por formatar os dados de acordo com uma determinada análise escolhida pelo usuário. 
 
@@ -89,13 +89,13 @@ O projeto está organizado da seguinte forma:
 
 O programa oferece as seguintes opções de análise:
 
-[1. Análise de Produtos]()
+[1. Análise de Produtos](#1. Análise de Produtos)
 
-[2. Análise de Clientes]()
+[2. Análise de Clientes](#2. Análise de Clientes)
 
-[3. Análise de Países]()
+[3. Análise de Países](#3. Análise de Países)
 
-[4. Análise de Sazonalidade]()
+[4. Análise de Sazonalidade](#4. Análise de Sazonalidade)
 
 Cada uma dessas opções possui submenus com relatórios específicos.
 
