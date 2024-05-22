@@ -5,9 +5,6 @@ Este projeto tem como objetivo criar uma aplicação para analisar, sob diferent
 
 Essa aplicação espera facilitar e auxiliar na preparação de campanhas de vendas e marketing da empresa, além de contribuir para possíveis segmentações de produtos ou clientes, fornecendo um resumo rápido e interativo sobre os principais produtos, clientes, países compradores e sazonalidade das vendas dessa varejista.
 
-### Período Analisado
-O período analisado vai de dezembro de 2010 a dezembro de 2011. No entanto, a aplicação está preparada para receber dados de outros períodos.
-
 ### Motivação
 O projeto foi realizado para aplicar os conhecimentos adquiridos em Python e análise de dados até o momento, após a conclusão da trilha de Python do DataCamp. O objetivo era treinar e colocar em prática diversos conceitos de desenvolvimento em Python, como módulos, pacotes e funções, aplicados à área de dados.
 
