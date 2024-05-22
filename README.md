@@ -11,23 +11,25 @@ O período analisado vai de dezembro de 2010 a dezembro de 2011. No entanto, a a
 ### Motivação
 O projeto foi realizado para aplicar os conhecimentos adquiridos em Python e análise de dados até o momento, após a conclusão da trilha de Python do DataCamp. O objetivo era treinar e colocar em prática diversos conceitos de desenvolvimento em Python, como módulos, pacotes e funções, aplicados à área de dados.
 
+
 ## Índice
 
-- [Introdução](#Introdução)
+- [Introdução](#introdução)
 
-- [Fonte dos Dados](#Fonte dos Dados)
+- [Fonte dos Dados](#fonte-dos-dados)
 
-- [Dicionário dos Dados](#Dicionário dos Dados)
+- [Dicionário dos Dados](#dicionário-dos-dados)
 
-- [Análise Inicial do Dataset](#Análise Inicial do Dataset)
+- [Análise Inicial do Dataset](#análise-inicial-do-dataset)
 
-- [Estrutura do Projeto](#Estrutura do Projeto)
+- [Estrutura do Projeto](#estrutura-do-projeto)
 
-- [Funcionalidades](#Funcionalidades)
+- [Funcionalidades](#funcionalidades)
 
-- [Aprendizados](#Aprendizados)
+- [Aprendizados](#aprendizados)
 
-- [Executando Localmente](#Executando Localmente)
+- [Executando Localmente](#executando-localmente)
+
 
 
 ## Introdução
