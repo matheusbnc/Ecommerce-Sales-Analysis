@@ -91,13 +91,13 @@ O projeto está organizado da seguinte forma:
 
 O programa oferece as seguintes opções de análise:
 
-[1. Análise de Produtos](#1. Análise de Produtos)
+[1. Análise de Produtos](#1-análise-de-produtos)
 
-[2. Análise de Clientes](#2. Análise de Clientes)
+[2. Análise de Clientes](#2-análise-de-clientes)
 
-[3. Análise de Países](#3. Análise de Países)
+[3. Análise de Países](#3-análise-de-países)
 
-[4. Análise de Sazonalidade](#4. Análise de Sazonalidade)
+[4. Análise de Sazonalidade](#4-análise-de-sazonalidade)
 
 Cada uma dessas opções possui submenus com relatórios específicos.
 
